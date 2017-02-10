@@ -29,13 +29,11 @@ fun executeQueryOnContext(dataContext: DataContext, query: String): String {
 
     val gson = Gson()
     while (dataSet.next()) {
-
         val tmpRow = dataSet.row.values.mapTo(ArrayList<String>()) { it.toString() }
         textualRows.add(tmpRow)
     }
 
     result.append(gson.toJson(textualRows))
-
     return result.toString()
 }
 
@@ -63,7 +61,6 @@ fun executeSelect(sources: ArrayList<DataSourceRequest>, query: String): String 
     }
 
     val dataContext = DataContextFactory.createCompositeDataContext(dataContexts)
-
     return executeQueryOnContext(dataContext, query)
 }
 
